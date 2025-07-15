@@ -1,0 +1,23 @@
+---
+import '../styles/global.css';
+import Button from "../components/ui/Button.astro";
+---
+
+<html lang="es">
+  <head>
+    <title>Prueba de Botones</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+  <body class="p-8 bg-[#f2f2f2] flex flex-col gap-4 items-start min-h-screen text-[#072040]">
+    <h1 class="text-3xl font-bold text-[#072040] mb-4">Prueba de Botones</h1>
+
+    <Button texto="Primario" tipo="primary" />
+    <Button texto="Secundario" tipo="secondary" />
+    <Button texto="Correcto" tipo="success" />
+    <Button texto="Error" tipo="error" />
+    <Button texto="Advertencia" tipo="warning" />
+    <Button texto="Transparente" tipo="light" />
+    <Button texto="Grande y Ancho" tipo="primary" tamaño="lg" fullWidth={true} />
+  </body>
+</html>

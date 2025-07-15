@@ -1,0 +1,46 @@
+---
+// tipos de valores para las propiedades
+interface Props {
+  texto?: string;
+  tipo?: "primary" | "secondary" | "success" | "error"| "light" | "warning";
+  tamaño?: "sm" | "md" | "lg";
+  fullWidth?: boolean;
+}
+
+//propiedades por defecto
+const {
+  texto = "Botón",
+  tipo = "primary",
+  tamaño = "md",
+  fullWidth = false
+} = Astro.props as Props;
+
+// tipos de botones por colores
+const tipoClaseMap = {
+  primary: "bg-[#072040] text-white hover:bg-[#0b2c5a]",        // Azul oscuro principal
+  secondary: "bg-[#46abff] text-white hover:bg-[#3791dd]",      // Azul claro
+  success: "bg-[#d8ffa7] text-[#072040] hover:bg-[#c1eb90]",    // Verde suave
+  error: "bg-[#ff8f8f] text-[#072040] hover:bg-[#f97373]",      // Rojo suave
+  warning: "bg-[#ffd770] text-[#072040] hover:bg-[#f3c950]",    // Naranja suave
+  light: "bg-[#d6e8ff] text-[#072040] hover:bg-[#bdddfc]",      // Azul transparente
+  neutral: "bg-[#f2f2f2] text-[#072040] hover:bg-[#e0e0e0]",     // Gris fondo
+  white: "bg-white text-[#072040] hover:bg-[#f5f5f5]",           // Blanco
+};
+
+//tamaños para cada uno de los tipos de botones
+const tamañoClaseMap = {
+  sm: "text-sm py-1 px-3",
+  md: "text-base py-2 px-4",
+  lg: "text-lg py-3 px-6"
+};
+
+const tipoClase = tipoClaseMap[tipo];
+const tamañoClase = tamañoClaseMap[tamaño];
+const anchoClase = fullWidth ? "w-full" : "";
+---
+
+<button
+  class={`rounded-lg font-semibold transition-colors duration-300 ${tipoClase} ${tamañoClase} ${anchoClase}`}
+>
+  {texto}
+</button>
