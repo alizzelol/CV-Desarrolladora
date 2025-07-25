@@ -1,17 +1,18 @@
 ---
- import './src/styles/global.css';
- const { title = "CV" } = Astro.props;
+// src/pages/index.astro
+import BaseLayout from '../layouts/BaseLayout.astro'; // Importa tu layout base
 
+// Aquí puedes definir props específicas para esta página si las necesitas.
+// El 'title' ya se pasa al BaseLayout.
 ---
 
-<html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <title>{title}</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<BaseLayout title="Salomé González Saunier - CV">
+  <section class="hero min-h-screen bg-base-200">
+    <div class="hero-content text-center">
+      <div class="max-w-md">
+        <h1 class="text-5xl font-bold">Salomé González Saunier</h1>
+      </div>
+    </div>
+  </section>
 
-    <h1>
-      Salomé González Saunier
-    </h1>
-
-  </head>
+  </BaseLayout>

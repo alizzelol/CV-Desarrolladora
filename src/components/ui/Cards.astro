@@ -1,0 +1,38 @@
+---
+// src/components/ui/Cards.astro
+
+interface Props {
+  size?: 'small' | 'medium' | 'large' | 'full' | 'auto'; // Añadida opción 'auto'
+}
+
+const { size } = Astro.props;
+
+// Mapeo de la propiedad 'size' a las clases de ancho de Tailwind
+let cardWidthClass = ''; // Por defecto, sin max-width, para que 'w-full' lo controle.
+
+switch (size) {
+  case 'small':
+    cardWidthClass = 'max-w-xs'; // Ejemplo: 320px
+    break;
+  case 'medium':
+    cardWidthClass = 'max-w-md'; // Ejemplo: 448px
+    break;
+  case 'large':
+    cardWidthClass = 'max-w-lg'; // Ejemplo: 512px
+    break;
+  case 'full':
+    cardWidthClass = 'max-w-full'; // Ocupa todo el ancho disponible
+    break;
+  case 'auto':
+    cardWidthClass = 'max-w-none'; // No impone un ancho máximo específico, ideal para diseños complejos
+    break;
+  default:
+    cardWidthClass = 'max-w-md'; // Valor por defecto si no se especifica 'size'
+}
+---
+
+<div class={`card w-full ${cardWidthClass} bg-base-100 shadow-xl mb-6 border border-base-200`}>
+  <div class="card-body">
+    <slot /> {/* <-- AQUÍ ES DONDE SE INYECTA TODO EL CONTENIDO QUE PONGAS DENTRO DE <Cards>...</Cards> */}
+  </div>
+</div>
